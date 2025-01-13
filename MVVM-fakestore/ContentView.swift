@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
+
 
 struct ContentView: View {
-    
-    
+        
     //The @StateObject property wrapper is responsible for keeping the object alive throughout the life of the app.
     @StateObject private var vm : ProductListViewModel = ProductListViewModel(webService: WebService())
     
@@ -19,42 +20,7 @@ struct ContentView: View {
             
             List {
                 ForEach(vm.products) { prod  in
-                    
-                    HStack {
-                        
-                        
-                        //Image(uiImage: UIImage(data: Data(base64Encoded: prod.thumb)!)!)
-                        
-                        /*
-                        Image(NSDataAssetName(contentsOf:URL(string:prod.thumb), usedEncoding: &UTF8))
-                            .resizable()
-                            .frame(width:30, height: 30)
-                        */
-                        
-                        /*
-                        Image(systemName: "cloud.fill")
-                            .resizable()
-                            .frame(width:30, height:30)
-                        */
-                        
-                        ImageFromUrl(url: prod.thumb)
-                            .aspectRatio(contentMode:.fill)
-                            .frame(width:50, height:50)
-                            .clipped()
-                            .padding()
-                            
-                        
-                        Text(prod.title)
-                            .foregroundColor(Color(.black))
-                            .font(Font(UIFont.systemFont(ofSize:10)))
-                            .lineLimit(3)
-                        
-                        Text(String(format: "%.1f", prod.price) + "$")
-                            .foregroundColor(Color(.gray))
-                            .font(Font(UIFont.systemFont(ofSize:12)))
-                            .frame(maxWidth:.infinity, alignment:.trailing)
-                    }
-                    
+                    StoreMainList(prod: prod)
                 }
             }.task {
                 await vm.populateProducts()
@@ -69,5 +35,33 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+
+struct StoreMainList : View {
+    
+    var prod : ProductViewModel
+    
+    var body: some View {
+        
+        HStack {
+            
+            WebImage(url:URL(string:prod.thumb))
+                .resizable()
+                .frame(width:50, height:50)
+            
+            
+            Text(prod.title)
+                .foregroundColor(Color(.black))
+                .font(Font(UIFont.systemFont(ofSize:10)))
+                .lineLimit(3)
+            
+            Text(String(format: "%.1f", prod.price) + "$")
+                .foregroundColor(Color(.gray))
+                .font(Font(UIFont.systemFont(ofSize:12)))
+                .frame(maxWidth:.infinity, alignment:.trailing)
+        }
+        
     }
 }
