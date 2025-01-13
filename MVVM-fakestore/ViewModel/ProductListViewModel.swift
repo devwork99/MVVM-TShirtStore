@@ -1,0 +1,77 @@
+//
+//  ProductListViewModel.swift
+//  MVVM-fakestore
+//
+//  Created by Muhammad Yasir on 13/01/2025.
+//
+
+import Foundation
+
+
+
+//marked ObservableObject, so its accessible inside ContentView
+//lets assing everything on MainQueue
+
+@MainActor
+class ProductListViewModel : ObservableObject {
+    
+    
+    //dependency injection method, this makes testing easier
+    
+    let webService : WebService
+    
+    init(webService : WebService){
+        self.webService = webService
+    }
+    
+    
+    
+    
+    //define a property to hold the fetched products to pass on to another view
+    
+
+    @Published var products : [ProductViewModel] = []
+    
+    
+    func populateProducts() async {
+        
+        do {
+            let prods = try await webService.getAllProducts()
+            
+            self.products = prods.map(ProductViewModel.init)
+            
+            print("All Products == \(self.products)")
+            
+            
+        } catch let error {
+            print(error)
+        }
+        
+    }
+    
+}
+
+
+struct ProductViewModel : Identifiable {
+    
+    var id =  UUID()
+    
+    
+    private var product : ProductModel
+    
+    init(product: ProductModel) {
+        self.product = product
+    }
+        
+    var title : String {
+         product.title
+    }
+    
+    var price:Double {
+        product.price
+    }
+    
+    var thumb: String {
+        product.image
+    }
+}
