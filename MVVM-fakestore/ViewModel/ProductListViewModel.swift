@@ -25,26 +25,31 @@ class ProductListViewModel : ObservableObject {
     }
     
     
-    
-    
     //define a property to hold the fetched products to pass on to another view
     
-
     @Published var products : [ProductViewModel] = []
+    
+    
+    @Published var isLoading = false
     
     
     func populateProducts() async {
         
+        self.isLoading = true
+        
         do {
+            
             let prods = try await webService.getAllProducts()
             
             self.products = prods.map(ProductViewModel.init)
             
             print("All Products == \(self.products)")
             
+            self.isLoading = false
             
         } catch let error {
             print(error)
+            //self.isLoading = false
         }
         
     }

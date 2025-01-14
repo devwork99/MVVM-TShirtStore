@@ -14,21 +14,27 @@ struct ContentView: View {
     //The @StateObject property wrapper is responsible for keeping the object alive throughout the life of the app.
     @StateObject private var vm : ProductListViewModel = ProductListViewModel(webService: WebService())
     
-    
     var body: some View {
-        VStack {
-            
-            List {
-                ForEach(vm.products) { prod  in
-                    StoreMainList(prod: prod)
+        
+        
+        ZStack {
+            //To show a loader, you have to put it in a Zstack
+            if vm.isLoading{
+                ProgressView().progressViewStyle(.circular)
+            }else{
+                VStack {
+                    List {
+                        ForEach(vm.products) { prod  in
+                            StoreMainList(prod: prod)
+                        }
+                    }
                 }
-            }.task {
-                await vm.populateProducts()
             }
-            
-            
+        }.task {
+            //attach the task to ZStack
+            await vm.populateProducts()
         }
-        //.padding()
+
     }
 }
 
