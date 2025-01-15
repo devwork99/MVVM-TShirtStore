@@ -34,6 +34,9 @@ struct CheckoutView : View {
     }
     
     
+    @State private var showOrderPlaceAlert = false
+    
+    
     var body: some View {
         Form {
             
@@ -69,12 +72,18 @@ struct CheckoutView : View {
             Section ("Total : \(totalPrice)"){
                 Button("Confirm Order") {
                     //place the order here.
+                    showOrderPlaceAlert.toggle()
                 }
             }
             
         }
         .navigationTitle("Payment")
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Confirm", isPresented: $showOrderPlaceAlert) {
+            //add your button here
+        } message: {
+            Text("You total was \(totalPrice) - Thank you.")
+        }
     }
 }
 
