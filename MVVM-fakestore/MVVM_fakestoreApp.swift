@@ -17,7 +17,8 @@ struct MVVM_fakestoreApp: App {
             
             //environmentobject is SwiftUI way of sharing data in many parts of the application.
             //As the navigationstack pushes, the following views also gets access to the Order
-            ContentView()
+            //ContentView()
+            MainView()
                 .environmentObject(order)
             //NavigationStackBootCamp()
         }

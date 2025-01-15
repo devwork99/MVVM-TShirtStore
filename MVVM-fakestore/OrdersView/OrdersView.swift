@@ -26,8 +26,11 @@ struct OrdersView : View {
                     ForEach(order.items) { item in
                         HStack{
                             Text("\(item.title)")
+                                .lineLimit(1)
+
                             Spacer()
-                            Text("\(item.price)")
+                            
+                            Text(String(format:"%.1f", item.price))
                         }
                     }
                 }
