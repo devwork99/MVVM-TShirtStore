@@ -22,9 +22,16 @@ struct CheckoutView : View {
     @State private var loyalityCardNumber = ""
     
     
-    let tipOptions = ["10", "15", "20", "25", "0"]
+    let tipOptions : [Int] = [10, 15, 20, 25, 0]
     
-    @State private var selectedTipOption = "15"
+    @State private var selectedTipOption : Int = 15
+    
+    
+    var totalPrice : String {
+        let amount = order.total
+        let percent = amount / 100 * Double(selectedTipOption)
+        return (amount+percent).formatted(.currency(code:"USD"))
+    }
     
     
     var body: some View {
@@ -59,7 +66,7 @@ struct CheckoutView : View {
                 
             }
             
-            Section ("Total : $100"){
+            Section ("Total : \(totalPrice)"){
                 Button("Confirm Order") {
                     //place the order here.
                 }
