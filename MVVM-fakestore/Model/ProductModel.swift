@@ -7,10 +7,6 @@
 
 import Foundation
 
-
-
-
-
 // MARK: - Welcome
 struct ProductModel: Codable {
     let id: Int
@@ -25,4 +21,17 @@ struct ProductModel: Codable {
 struct Rating: Codable {
     let rate: Double
     let count: Int
+}
+
+
+func sampleProduct()->ProductModel{
+    
+  return ProductModel(id:7865,
+                      title: "This is a sample Title of the Product",
+                      price:45,
+                      description:"This is a sample description",
+                      category:"Fasion - clothing", image: "uououo890809",
+                      rating:Rating(rate:1.9, count: 78))
+    
+
 }

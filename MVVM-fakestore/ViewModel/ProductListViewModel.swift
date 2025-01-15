@@ -57,10 +57,17 @@ class ProductListViewModel : ObservableObject {
 }
 
 
-struct ProductViewModel : Identifiable {
+struct ProductViewModel : Identifiable , Hashable{
+    
+    static func == (lhs: ProductViewModel, rhs: ProductViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
     
     var id =  UUID()
-    
     
     private var product : ProductModel
     
@@ -77,6 +84,18 @@ struct ProductViewModel : Identifiable {
     }
     
     var thumb: String {
+        product.image
+    }
+    
+    var description : String {
+        product.description
+    }
+    
+    var category : String {
+        product.category
+    }
+    
+    var image : String {
         product.image
     }
 }
