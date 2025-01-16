@@ -147,7 +147,7 @@
 				450D8FE52D354AB9002D203A /* Extensions */,
 				450D8FE22D353320002D203A /* ViewModel */,
 				450D8FDF2D352C43002D203A /* Model */,
-				450D8FDC2D352AD3002D203A /* WerService */,
+				450D8FDC2D352AD3002D203A /* WebService */,
 				450D8FB12D352AA7002D203A /* MVVM_fakestoreApp.swift */,
 				450D8FB32D352AA7002D203A /* ContentView.swift */,
 				45048EF62D37FD8C009DD2E8 /* TabView */,
@@ -187,12 +187,12 @@
 			path = "MVVM-fakestoreUITests";
 			sourceTree = "<group>";
 		};
-		450D8FDC2D352AD3002D203A /* WerService */ = {
+		450D8FDC2D352AD3002D203A /* WebService */ = {
 			isa = PBXGroup;
 			children = (
 				450D8FDD2D352AEA002D203A /* WebService.swift */,
 			);
-			path = WerService;
+			path = WebService;
 			sourceTree = "<group>";
 		};
 		450D8FDF2D352C43002D203A /* Model */ = {
@@ -549,6 +549,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MVVM-fakestore/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App needs to access camera";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App needs to access location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App needs to access location when you are playing the game.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App needs to access Mic";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "App needs to save photo in library, please give access";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App needs to access Photo library";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -585,6 +591,12 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MVVM-fakestore/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App needs to access camera";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App needs to access location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App needs to access location when you are playing the game.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "App needs to access Mic";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "App needs to save photo in library, please give access";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "App needs to access Photo library";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
