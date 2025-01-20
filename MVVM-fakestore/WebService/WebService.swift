@@ -19,6 +19,9 @@ enum NetworkError : Error {
 class WebService {
     
     
+    //static let shared = WebService()
+    //private init(){}
+        
     func getAllProducts() async throws -> [ProductModel] {
         
         //make the url or throw
@@ -28,7 +31,7 @@ class WebService {
 
         
         //get the data & response
-        let (data, response) = try await URLSession.shared.data(for: URLRequest(url:url))
+        let (data, response) = try await URLSession.shared.data(for:URLRequest(url:url))
         
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else{
@@ -44,6 +47,29 @@ class WebService {
         
         return products
         
+    }
+    
+    
+    func getSortedProducts() async throws -> [ProductModel] {
+        
+        guard let url = URL(string: "https://fakestoreapi.com/products?sort=desc") else {
+            throw NetworkError.badURL
+        }
+
+        
+        let (data, response) = try await URLSession.shared.data(for: URLRequest(url:url))
+        
+        
+        guard let resp = response as? HTTPURLResponse, resp.statusCode == 200 else {
+            throw NetworkError.badResponse
+        }
+        
+        guard let sortList = try? JSONDecoder().decode([ProductModel].self, from: data) else{
+            throw NetworkError.decodeError
+        }
+        
+        
+        return sortList
     }
     
     
