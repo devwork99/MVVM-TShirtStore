@@ -30,6 +30,8 @@
 		45EDB3E52D392D4500B4F7C8 /* SortedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDB3E42D392D4500B4F7C8 /* SortedListViewModel.swift */; };
 		45F24AF72D3E8251000CA242 /* CoreDataBootCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F24AF62D3E8251000CA242 /* CoreDataBootCamp.swift */; };
 		45F24AFA2D3E84BC000CA242 /* FruitContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45F24AF82D3E84BC000CA242 /* FruitContainer.xcdatamodeld */; };
+		45F24AFD2D3EA2D8000CA242 /* CoreDataRelationshipBootCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F24AFC2D3EA2D8000CA242 /* CoreDataRelationshipBootCamp.swift */; };
+		45F24B002D3EA9D1000CA242 /* CoreDataContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 45F24AFE2D3EA9D1000CA242 /* CoreDataContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		45EDB3EA2D39435600B4F7C8 /* ObjectOrientedProgramming2.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ObjectOrientedProgramming2.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		45F24AF62D3E8251000CA242 /* CoreDataBootCamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBootCamp.swift; sourceTree = "<group>"; };
 		45F24AF92D3E84BC000CA242 /* FruitContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FruitContainer.xcdatamodel; sourceTree = "<group>"; };
+		45F24AFC2D3EA2D8000CA242 /* CoreDataRelationshipBootCamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRelationshipBootCamp.swift; sourceTree = "<group>"; };
+		45F24AFF2D3EA9D1000CA242 /* CoreDataContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataContainer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				451AFC142D36B59B0001A039 /* NavigationStackBootCamp.swift */,
+				45F24AFB2D3EA2C0000CA242 /* CoreData */,
 				45EDB3EA2D39435600B4F7C8 /* ObjectOrientedProgramming2.playground */,
 				45EDB3E92D3942CB00B4F7C8 /* ObjectOrientedProgramming.playground */,
 				45EDB3E82D393EC100B4F7C8 /* BootCampTuples.playground */,
@@ -260,6 +265,15 @@
 				45EDB3E42D392D4500B4F7C8 /* SortedListViewModel.swift */,
 			);
 			path = SortedList;
+			sourceTree = "<group>";
+		};
+		45F24AFB2D3EA2C0000CA242 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				45F24AFC2D3EA2D8000CA242 /* CoreDataRelationshipBootCamp.swift */,
+				45F24AFE2D3EA9D1000CA242 /* CoreDataContainer.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,6 +425,8 @@
 				45F24AF72D3E8251000CA242 /* CoreDataBootCamp.swift in Sources */,
 				45048EFB2D3802AF009DD2E8 /* CheckoutView.swift in Sources */,
 				450D8FB22D352AA7002D203A /* MVVM_fakestoreApp.swift in Sources */,
+				45F24B002D3EA9D1000CA242 /* CoreDataContainer.xcdatamodeld in Sources */,
+				45F24AFD2D3EA2D8000CA242 /* CoreDataRelationshipBootCamp.swift in Sources */,
 				450D8FE12D352C53002D203A /* ProductModel.swift in Sources */,
 				450D8FEA2D355E33002D203A /* ImageFromUrl.swift in Sources */,
 				45048EF82D37FDA1009DD2E8 /* MainView.swift in Sources */,
@@ -798,6 +814,16 @@
 			);
 			currentVersion = 45F24AF92D3E84BC000CA242 /* FruitContainer.xcdatamodel */;
 			path = FruitContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		45F24AFE2D3EA9D1000CA242 /* CoreDataContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				45F24AFF2D3EA9D1000CA242 /* CoreDataContainer.xcdatamodel */,
+			);
+			currentVersion = 45F24AFF2D3EA9D1000CA242 /* CoreDataContainer.xcdatamodel */;
+			path = CoreDataContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
