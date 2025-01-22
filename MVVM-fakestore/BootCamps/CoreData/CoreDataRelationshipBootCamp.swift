@@ -19,6 +19,8 @@ import CoreData
 
 //lets setup separate CoreDataManager, with container & context object.
 
+//MARK: - CoreDataManager
+
 class CoreDataManager {
     
     static let instance = CoreDataManager() //Singleton
@@ -45,7 +47,7 @@ class CoreDataManager {
             try context.save()
             print("Entity Saved")
         } catch let error {
-            print("CD Save error - \(error.localizedDescription)")
+            print("CDManager Save error - \(error.localizedDescription)")
         }
         
     }
@@ -53,26 +55,28 @@ class CoreDataManager {
 }
 
 
+//MARK: - CoreDataRelationshipViewModel
 
 class CoreDataRelationshipViewModel : ObservableObject {
     
     let manager = CoreDataManager()
     
-    var businesses : [BusinessEntity] = []
+    @Published var businesses : [BusinessEntity] = []
+    @Published var departments : [DepartmentEntity] = []
     
     
     init(){
-        fetchRequest()
+        getBusinesses()
+        getDepartments()
     }
     
-    func fetchRequest(){
+    func getBusinesses(){
         let request = NSFetchRequest<BusinessEntity>(entityName:"BusinessEntity")
         do {
             businesses = try manager.context.fetch(request)
         } catch let error {
             print("Error fetch businessEntity - \(error.localizedDescription)")
         }
-        
     }
     
     func addBusiness(){
@@ -81,12 +85,39 @@ class CoreDataRelationshipViewModel : ObservableObject {
         save()
     }
     
+    //-----------------------
+    func getDepartments(){
+        let request = NSFetchRequest<DepartmentEntity>(entityName:"DepartmentEntity")
+        do {
+            departments = try manager.context.fetch(request)
+        } catch let error {
+            print("Error fetch getDepartments - \(error.localizedDescription)")
+        }
+    }
+    
+    func addDepartment(){
+        let department = DepartmentEntity(context: manager.context)
+        department.name = "Marketing"
+        department.business = [businesses[0]]
+        
+        save()
+    }
+    
     func save(){
-        manager.save()
+        
+        businesses.removeAll()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.manager.save()
+            self.getBusinesses()
+        })
     }
     
 }
 
+
+
+//MARK: - CoreDataRelationshipBootCamp
 
 struct CoreDataRelationshipBootCamp: View {
     
@@ -97,7 +128,7 @@ struct CoreDataRelationshipBootCamp: View {
             ScrollView {
                 VStack(spacing:20){
                     Button {
-                        vm.addBusiness()
+                        vm.addDepartment()
                     } label: {
                         Text("Perform Action")
                             .foregroundColor(.white)
@@ -113,15 +144,21 @@ struct CoreDataRelationshipBootCamp: View {
                         }
                     }
                     
+                    
+                    ScrollView(.horizontal, showsIndicators:true) {
+                        ForEach(vm.departments) { department in
+                            DepartmentView(entity: department)
+                        }
+                    }
+                    
+                    
                 }
                 .padding(.horizontal)
-                
-                
                 
             }
             
             .navigationTitle("Relationships")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
@@ -133,7 +170,7 @@ struct CoreDataRelationshipBootCamp_Previews: PreviewProvider {
 }
 
 
-// Separate Business View
+//MARK: - Separate Views
 
 struct BusinessesView : View {
     
@@ -166,5 +203,38 @@ struct BusinessesView : View {
         .cornerRadius(10)
         .shadow(radius:10)
         
+    }
+}
+
+struct DepartmentView : View {
+    
+    let entity : DepartmentEntity
+
+    var body: some View {
+        
+        VStack(alignment:.leading, spacing: 10, content: {
+            Text("Department : \(entity.name ?? "")")
+            
+            if let businesses = entity.business?.allObjects as? [BusinessEntity] {
+                Text("Businesses:")
+                    .bold()
+                ForEach(businesses) { business in
+                    Text(business.name ?? "")
+                }
+            }
+            
+            if let employees = entity.employee?.allObjects as? [EmployeeEntity] {
+                Text("Employees:")
+                    .bold()
+                ForEach(employees) { emp in
+                    Text(emp.name ?? "")
+                }
+            }
+        })
+        .padding()
+        .frame(maxWidth:300, alignment:.leading)
+        .background(Color.green.opacity(0.5))
+        .cornerRadius(10)
+        .shadow(radius:10)
     }
 }
