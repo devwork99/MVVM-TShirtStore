@@ -74,6 +74,14 @@ class CoreDataRelationshipViewModel : ObservableObject {
     
     func getBusinesses(){
         let request = NSFetchRequest<BusinessEntity>(entityName:"BusinessEntity")
+        
+        /*
+        let desc = NSSortDescriptor(keyPath:\BusinessEntity.name, ascending:true)
+        request.sortDescriptors = [desc]
+        let predi = NSPredicate(format: "name == %@", "Apple")
+        request.predicate = predi
+        */
+        
         do {
             businesses = try manager.context.fetch(request)
         } catch let error {
@@ -107,23 +115,30 @@ class CoreDataRelationshipViewModel : ObservableObject {
     
     func addDepartment(){
         let department = DepartmentEntity(context: manager.context)
-        department.name = "Engineering"
-        //department.business = [businesses[0]]
-        
+        department.name = "Finance"
+        department.business = [businesses[0], businesses[1], businesses[2]]
         department.addToEmployee(employees[1])
+        //department.addToEmployee(employees[1])
         
         save()
     }
+    
+    func deleteDepartment(){
+        let department = departments[2]
+        manager.context.delete(department)
+        save()
+    }
+    
     //-----------------------
     
     func addEmployee(){
         let employee = EmployeeEntity(context: manager.context)
-        employee.name = "Emily"
-        employee.age = 35
+        employee.name = "John"
+        employee.age = 21
         employee.dateOfJoin = Date()
         
-        //employee.business = businesses[0]
-        //employee.department = departments[0]
+        employee.business = businesses[2]
+        employee.department = departments[1]
         
         
         save()
@@ -131,6 +146,19 @@ class CoreDataRelationshipViewModel : ObservableObject {
     
     func getEmployee(){
         let request = NSFetchRequest<EmployeeEntity>(entityName:"EmployeeEntity")
+        do {
+            employees = try manager.context.fetch(request)
+        } catch let error {
+            print("Error fetch getEmployee - \(error.localizedDescription)")
+        }
+    }
+    
+    func getEmployee(forBusiness business:BusinessEntity){
+        let request = NSFetchRequest<EmployeeEntity>(entityName:"EmployeeEntity")
+        
+        let pred = NSPredicate(format:"business == %@", business)
+        request.predicate = pred
+        
         do {
             employees = try manager.context.fetch(request)
         } catch let error {
@@ -166,9 +194,12 @@ struct CoreDataRelationshipBootCamp: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing:10){
+                VStack(spacing:20){
                     Button {
-                        vm.addBusiness()
+                        vm.addEmployee()
+                        //vm.deleteDepartment()
+                        //to get employees that work at Apple only
+                        //vm.getEmployee(forBusiness: vm.businesses[0])
                     } label: {
                         Text("Perform Action")
                             .foregroundColor(.white)
