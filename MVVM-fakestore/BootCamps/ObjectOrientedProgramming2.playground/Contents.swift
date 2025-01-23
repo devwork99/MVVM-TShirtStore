@@ -1,5 +1,5 @@
 import UIKit
-
+import Combine
 
 
 /*
@@ -70,3 +70,18 @@ import UIKit
  
  
  */
+
+// A Passthroughsubject is used to send or pass values to s subscriber of my choice
+let subject = PassthroughSubject<Int,Never>()
+
+
+let subscriber = subject.sink { value in
+    print("value == \(value)")
+}
+
+
+
+subject.send(10)
+subject.send(20)
+subject.send(30)
+
