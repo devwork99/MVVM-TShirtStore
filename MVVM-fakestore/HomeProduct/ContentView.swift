@@ -13,7 +13,10 @@ struct ContentView: View {
         
     //The @StateObject property wrapper is responsible for keeping the object alive throughout the life of the app.
     
-    @StateObject private var vm : ProductListViewModel = ProductListViewModel(webService: WebService())
+    @StateObject private var vm : ProductListViewModel = ProductListViewModel(networkManager:NetworkManager())
+    
+    //dependency injection, here
+    //@StateObject private var vm:ProductListViewModel = ProductListViewModel(prodcutsService: ProductsService(client: NetworkManager()))
     
     var body: some View {
                 
@@ -28,15 +31,12 @@ struct ContentView: View {
                         List {
                             ForEach(vm.products) { prod  in
                                 
-                                
 //                                NavigationLink {
 //                                    ProductDetail(prod:prod)
 //                                } label: {
 //                                    StoreMainList(prod: prod)
 //                                }
-                                
-                                
-                                
+
                                 NavigationLink (value: prod){
                                     StoreMainList(prod: prod)
                                 }
@@ -47,7 +47,9 @@ struct ContentView: View {
                 }
             }.task {
                 //attach the task to ZStack
-                await vm.populateProducts()
+                //await vm.populateProducts()
+                //with Combine
+                await vm.fetchAllProductsWithCombine()
             }
             
             
