@@ -30,7 +30,7 @@ enum NetworkError : Error {
 
 
 protocol NetworkManagerProtocol {
-    func getTheProductsWithCombine() -> AnyPublisher <[ProductModel], Error>
+    func fetchProductsWithCombine() -> AnyPublisher <[ProductModel], Error>
 }
 
 
@@ -45,7 +45,7 @@ class NetworkManager : NetworkManagerProtocol {
     //var cancellables = Set<AnyCancellable>()
     
     //lets do everything with Combine
-    func getTheProductsWithCombine() -> AnyPublisher <[ProductModel], Error>{
+    func fetchProductsWithCombine() -> AnyPublisher <[ProductModel], Error>{
         
         guard let url = URL(string: "https://fakestoreapi.com/products?sort=desc") else {
             //return publisher with error inside

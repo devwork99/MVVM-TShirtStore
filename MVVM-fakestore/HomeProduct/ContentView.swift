@@ -49,7 +49,8 @@ struct ContentView: View {
                 //attach the task to ZStack
                 //await vm.populateProducts()
                 //with Combine
-                await vm.fetchAllProductsWithCombine()
+                //await vm.populateTheProducts()
+                vm.populateTheProducts()
             }
             
             

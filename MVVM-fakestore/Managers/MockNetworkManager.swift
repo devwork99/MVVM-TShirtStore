@@ -17,7 +17,7 @@ class MockNetworkManager  : NetworkManagerProtocol {
     let three = ProductModel(id:101, title:"first product", price:23.8, description: "first product long long description", category:"Clothing", image:"", rating:Rating(rate: 3.0, count:23))
     
     //we are going to use the Just publisher, that publish just one value and never fails.
-    func getTheProductsWithCombine() -> AnyPublisher<[ProductModel], Error> {
+    func fetchProductsWithCombine() -> AnyPublisher<[ProductModel], Error> {
         Just([first,two,three])
             .tryMap({ $0 })
             .eraseToAnyPublisher()

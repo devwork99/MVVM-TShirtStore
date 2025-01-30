@@ -31,6 +31,7 @@
 		451C28402D49456F00CC3950 /* ProductViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451C283F2D49456F00CC3950 /* ProductViewModelTests.swift */; };
 		45219FB92D47C86100D7CAD7 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45219FB82D47C86100D7CAD7 /* Notes.swift */; };
 		453D46862D4A6609001B35FE /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453D46852D4A6609001B35FE /* MockNetworkManager.swift */; };
+		45DC605B2D4A84CC00AE529C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 45DC605A2D4A84CC00AE529C /* SDWebImageSwiftUI */; };
 		45EDB3E32D392CD400B4F7C8 /* SortedProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDB3E22D392CD400B4F7C8 /* SortedProductList.swift */; };
 		45EDB3E52D392D4500B4F7C8 /* SortedListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EDB3E42D392D4500B4F7C8 /* SortedListViewModel.swift */; };
 		45F24AF72D3E8251000CA242 /* CoreDataBootCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F24AF62D3E8251000CA242 /* CoreDataBootCamp.swift */; };
@@ -42,13 +43,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		450D8FC02D352AAB002D203A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 450D8FA62D352AA7002D203A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 450D8FAD2D352AA7002D203A;
-			remoteInfo = "MVVM-fakestore";
-		};
 		450D8FCA2D352AAB002D203A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 450D8FA62D352AA7002D203A /* Project object */;
@@ -112,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45DC605B2D4A84CC00AE529C /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +151,7 @@
 				450D8FC22D352AAB002D203A /* MVVM-fakestoreTests */,
 				450D8FCC2D352AAB002D203A /* MVVM-fakestoreUITests */,
 				450D8FAF2D352AA7002D203A /* Products */,
+				45DC60592D4A84CC00AE529C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -293,6 +289,13 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		45DC60592D4A84CC00AE529C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		45EDB3E02D3924FD00B4F7C8 /* HomeProduct */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,9 +358,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				450D8FC12D352AAB002D203A /* PBXTargetDependency */,
+				45DC60582D4A83F900AE529C /* PBXTargetDependency */,
 			);
 			name = "MVVM-fakestoreTests";
+			packageProductDependencies = (
+				45DC605A2D4A84CC00AE529C /* SDWebImageSwiftUI */,
+			);
 			productName = "MVVM-fakestoreTests";
 			productReference = 450D8FBF2D352AAB002D203A /* MVVM-fakestoreTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -506,15 +512,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		450D8FC12D352AAB002D203A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 450D8FAD2D352AA7002D203A /* MVVM-fakestore */;
-			targetProxy = 450D8FC02D352AAB002D203A /* PBXContainerItemProxy */;
-		};
 		450D8FCB2D352AAB002D203A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 450D8FAD2D352AA7002D203A /* MVVM-fakestore */;
 			targetProxy = 450D8FCA2D352AAB002D203A /* PBXContainerItemProxy */;
+		};
+		45DC60582D4A83F900AE529C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 45DC60572D4A83F900AE529C /* SDWebImageSwiftUI */;
 		};
 /* End PBXTargetDependency section */
 
@@ -852,6 +857,16 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		450D8FEF2D3578A0002D203A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 450D8FEE2D3578A0002D203A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		45DC60572D4A83F900AE529C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 450D8FEE2D3578A0002D203A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		45DC605A2D4A84CC00AE529C /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 450D8FEE2D3578A0002D203A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;

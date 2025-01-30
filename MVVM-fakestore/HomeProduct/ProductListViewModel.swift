@@ -18,28 +18,14 @@ class ProductListViewModel : ObservableObject {
     
     var cancellables = Set<AnyCancellable>()
     
-    let networkManager : NetworkManagerProtocol
     
+    //dependency injection method, this makes testing easier
+    
+    let networkManager : NetworkManagerProtocol
     
     init(networkManager: NetworkManagerProtocol) {
         self.networkManager = networkManager
     }
-    
-    //dependency injection method, this makes testing easier
-    //private let prodcutsService : ProdcutsServiceProtocol
-    
-    /*
-    let webService : WebService
-    init(webService : WebService){
-        self.webService = webService
-    }
-    */
-    
-    /*
-    init(prodcutsService: ProdcutsServiceProtocol) {
-        self.prodcutsService = prodcutsService
-    }*/
-    
     
     //define a property to hold the fetched products to pass on to another view
     
@@ -67,7 +53,7 @@ class ProductListViewModel : ObservableObject {
     
     //view model converts or changes the data that is more presentable to the view
     //with combine
-    func fetchAllProductsWithCombine() async {
+    func populateTheProducts() {
         
         //the difference between 2 different implementation is that,
         // first implementation is with NetworkClient is inside the view model, can't be tested
@@ -76,7 +62,7 @@ class ProductListViewModel : ObservableObject {
         
         self.isLoading = true
         
-        networkManager.getTheProductsWithCombine()
+        networkManager.fetchProductsWithCombine()
             .sink { completion in
                 switch completion {
                 case .failure(let error):
