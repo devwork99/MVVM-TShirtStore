@@ -8,9 +8,9 @@ A T Shirt Store app where use can browse the contents of store, view details and
     
 ## Screen Shots
 
-![alt text](https://github.com/devwork99/MVVM-TShirtStore/blob/dev/MVVM-fakestore/ScreenShots/list.png?raw=true)
-![alt text](https://github.com/devwork99/MVVM-TShirtStore/blob/dev/MVVM-fakestore/ScreenShots/details.png?raw=true)
-![alt text](https://github.com/devwork99/MVVM-TShirtStore/blob/dev/MVVM-fakestore/ScreenShots/orders.png?raw=true)
+### ![alt text](https://github.com/devwork99/MVVM-TShirtStore/blob/dev/MVVM-fakestore/ScreenShots/list.png?raw=true)
+### ![alt text](https://github.com/devwork99/MVVM-TShirtStore/blob/dev/MVVM-fakestore/ScreenShots/details.png?raw=true)
+### ![alt text](https://github.com/devwork99/MVVM-TShirtStore/blob/dev/MVVM-fakestore/ScreenShots/orders.png?raw=true)
 
 
 ## Dependency

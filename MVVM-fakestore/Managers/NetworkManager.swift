@@ -14,6 +14,8 @@ let baseUrl = "https://fakestoreapi.com/products"
 
 struct Endpoints {
     
+    //https://medium.com/mobile-app-developers/structuring-swift-api-endpoints-78a73a7d9b1e
+    
     var productsDesc : String { return baseUrl + "/?sort=desc" }
     
     var productsAsc : String { return baseUrl + "/?sort=desc" }
