@@ -9,16 +9,14 @@ import Foundation
 import Combine
 
 
+
+let baseUrl = "https://fakestoreapi.com/products"
+
 struct Endpoints {
-    let products = "https://fakestoreapi.com/products"
     
-    var descending : String {
-        return products + "/?sort=desc"
-    }
+    var productsDesc : String { return baseUrl + "/?sort=desc" }
     
-    var ascending : String {
-        return products + "/?sort=desc"
-    }
+    var productsAsc : String { return baseUrl + "/?sort=desc" }
 }
 
 
@@ -47,7 +45,9 @@ class NetworkManager : NetworkManagerProtocol {
     //lets do everything with Combine
     func fetchProductsWithCombine() -> AnyPublisher <[ProductModel], Error>{
         
-        guard let url = URL(string: "https://fakestoreapi.com/products?sort=desc") else {
+        //guard let url = URL(string: "https://fakestoreapi.com/products?sort=desc") else {
+        
+        guard let url = URL(string: Endpoints().productsAsc) else {
             //return publisher with error inside
             return Fail(error: NetworkError.badURL).eraseToAnyPublisher()
         }
@@ -59,35 +59,10 @@ class NetworkManager : NetworkManagerProtocol {
             .eraseToAnyPublisher()
     }
     
-    
-     /*
-    func getAllProducts() async throws -> [ProductModel] {
-        
-        //make the url or throw
-        guard let url = URL(string: "https://fakestoreapi.com/products") else {
-            throw NetworkError.badURL
-        }
-
-        //get the data & response
-        let (data, response) = try await URLSession.shared.data(for:URLRequest(url:url))
-                
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else{
-            throw NetworkError.badResponse
-        }
-        
-        //finally, lets decode the data
-        guard let products = try? JSONDecoder().decode([ProductModel].self, from: data) else {
-            throw NetworkError.decodeError
-        }
-        
-        return products
-    }
-    */
-    
-    /*
+    //with Async Await
     func getSortedProducts() async throws -> [ProductModel] {
         
-        guard let url = URL(string: "https://fakestoreapi.com/products?sort=desc") else {
+        guard let url = URL(string: Endpoints().productsAsc) else {
             throw NetworkError.badURL
         }
 
@@ -102,7 +77,7 @@ class NetworkManager : NetworkManagerProtocol {
         }
         
         return sortList
-    }*/
+    }
     
     
     

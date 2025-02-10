@@ -18,11 +18,12 @@ A T Shirt Store app where use can browse the contents of store, view details and
 Using SPM for dependency management, I am using SDWebImage to display images
 
 
-## MVVM architecture
+## MVVM architecture + Combine
 
     - ViewModel that has all the business logic, fetching data from internet, and converting into formate that is useable for the view
-    - View is "Active", means observe the changes from ViewModel with the Observable Protocol, has direct access to ViewModel
+    - View is written with SwiftUI and is "Active", it means observe the changes from ViewModel with the Observable Protocol, has direct access to ViewModel
     - Model, the business classes or the model objects
+    - Combine is used to fetch the data from API in the NetworkManager
 
 
 ## Unit Test
