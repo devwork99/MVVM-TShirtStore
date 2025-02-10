@@ -24,10 +24,12 @@ struct MainView : View {
                     Label("Orders", systemImage: "square.and.pencil")
                 }
             
+            /*
             CoreDataBootCamp()
                 .tabItem {
                     Label("Store", systemImage:"storefront.fill")
                 }
+            */
             
         }
     }

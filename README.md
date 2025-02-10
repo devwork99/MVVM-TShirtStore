@@ -1,0 +1,39 @@
+#  TShirtStore
+
+A T Shirt Store app where use can browse the contents of store, view details and finaly add to order.
+    - Product list
+    - Product deetails (add to order)
+    - Orders (where all items are listed)
+    
+    
+## Screen Shots
+
+//https://github.com/devwork99/MVVM-TShirtStore
+![alt text](https://github.com/devwork99/MVVM-TShirtStore/ScreenShots/dev/list.png?raw=true)
+![alt text](https://github.com/devwork99/MVVM-TShirtStore/ScreenShots/dev/details.png?raw=true)
+![alt text](https://github.com/devwork99/MVVM-TShirtStore/ScreenShots/dev/orders.png?raw=true)
+
+
+## Dependency
+
+Using SPM for dependency management, I am using SDWebImage to display images
+
+
+## MVVM architecture
+
+    - ViewModel that has all the business logic, fetching data from internet, and converting into formate that is useable for the view
+    - View is "Active", means observe the changes from ViewModel with the Observable Protocol, has direct access to ViewModel
+    - Model, the business classes or the model objects
+
+
+## Unit Test
+
+The ProductViewModelTests include tests
+- Test shows the list is populating with products
+
+
+## Networking
+
+    - The networking layer is called "NetworkManager" POP is used in NetworkManager, so the dependency in injected from outside, that is alternative of Singleton.
+    - With POP the MockNetworkingService is used that makes the unit tests easier.
+

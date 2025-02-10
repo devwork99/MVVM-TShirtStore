@@ -80,6 +80,10 @@
 		451C283F2D49456F00CC3950 /* ProductViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModelTests.swift; sourceTree = "<group>"; };
 		45219FB82D47C86100D7CAD7 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		453D46852D4A6609001B35FE /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
+		45EA62F12D5A2F0900E4AEFC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		45EA62F32D5A31A800E4AEFC /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		45EA62F42D5A31B300E4AEFC /* details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = details.png; sourceTree = "<group>"; };
+		45EA62F52D5A31BC00E4AEFC /* orders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orders.png; sourceTree = "<group>"; };
 		45EDB3E22D392CD400B4F7C8 /* SortedProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedProductList.swift; sourceTree = "<group>"; };
 		45EDB3E42D392D4500B4F7C8 /* SortedListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortedListViewModel.swift; sourceTree = "<group>"; };
 		45EDB3E82D393EC100B4F7C8 /* BootCampTuples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BootCampTuples.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -147,6 +151,7 @@
 		450D8FA52D352AA7002D203A = {
 			isa = PBXGroup;
 			children = (
+				45EA62F12D5A2F0900E4AEFC /* README.md */,
 				450D8FB02D352AA7002D203A /* MVVM-fakestore */,
 				450D8FC22D352AAB002D203A /* MVVM-fakestoreTests */,
 				450D8FCC2D352AAB002D203A /* MVVM-fakestoreUITests */,
@@ -168,12 +173,13 @@
 		450D8FB02D352AA7002D203A /* MVVM-fakestore */ = {
 			isa = PBXGroup;
 			children = (
+				45EA62F22D5A317A00E4AEFC /* ScreenShots */,
+				450D8FDC2D352AD3002D203A /* Managers */,
 				451C283C2D49432500CC3950 /* MockServices */,
 				451C28392D49388D00CC3950 /* Services */,
 				45219FB72D47C85100D7CAD7 /* Notes */,
 				450D8FE82D355E19002D203A /* AppCore */,
 				450D8FE52D354AB9002D203A /* Extensions */,
-				450D8FDC2D352AD3002D203A /* Managers */,
 				45EDB3E02D3924FD00B4F7C8 /* HomeProduct */,
 				451AFC102D36A5020001A039 /* DetailProduct */,
 				45048EF62D37FD8C009DD2E8 /* TabView */,
@@ -199,8 +205,8 @@
 		450D8FC22D352AAB002D203A /* MVVM-fakestoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				450D8FC32D352AAB002D203A /* MVVM_fakestoreTests.swift */,
 				451C283F2D49456F00CC3950 /* ProductViewModelTests.swift */,
+				450D8FC32D352AAB002D203A /* MVVM_fakestoreTests.swift */,
 			);
 			path = "MVVM-fakestoreTests";
 			sourceTree = "<group>";
@@ -294,6 +300,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45EA62F22D5A317A00E4AEFC /* ScreenShots */ = {
+			isa = PBXGroup;
+			children = (
+				45EA62F32D5A31A800E4AEFC /* list.png */,
+				45EA62F42D5A31B300E4AEFC /* details.png */,
+				45EA62F52D5A31BC00E4AEFC /* orders.png */,
+			);
+			path = ScreenShots;
 			sourceTree = "<group>";
 		};
 		45EDB3E02D3924FD00B4F7C8 /* HomeProduct */ = {
