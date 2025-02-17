@@ -9,6 +9,9 @@ import Foundation
 import Combine
 
 
+//Readout
+//https://developer.apple.com/documentation/foundation/urlsession/processing_url_session_data_task_results_with_combine
+
 
 let baseUrl = "https://fakestoreapi.com/products"
 
@@ -45,6 +48,7 @@ class NetworkManager : NetworkManagerProtocol {
     //var cancellables = Set<AnyCancellable>()
     
     //lets do everything with Combine
+
     func fetchProductsWithCombine() -> AnyPublisher <[ProductModel], Error>{
         
         //guard let url = URL(string: "https://fakestoreapi.com/products?sort=desc") else {
@@ -55,9 +59,23 @@ class NetworkManager : NetworkManagerProtocol {
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
+            .tryMap({ output -> Data in
+                guard let httpRespone = output.response as? HTTPURLResponse, httpRespone.statusCode == 200 else {
+                    throw NetworkError.badResponse
+                }
+                return output.data
+            })
+            
             .decode(type: [ProductModel].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
+        
+            .mapError({ error in
+                if let generalError = error as? NetworkError {
+                    return generalError
+                }else{
+                    return NetworkError.decodeError
+                }
+            })
             .eraseToAnyPublisher()
     }
     
